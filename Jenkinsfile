@@ -14,5 +14,11 @@ pipeline {
       }
     }
 
+    stage('Front End Unit Tests') {
+      steps {
+        sh 'cd curriculum-front && npm i && npm run test:unit'
+      }
+    }
+
   }
 }
