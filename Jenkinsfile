@@ -32,8 +32,19 @@ pipeline {
     }
 
     stage('Build Front End') {
-      steps {
-        sh 'docker build -f curriculum-front/Dockerfile .'
+      parallel {
+        stage('Build Front End') {
+          steps {
+            sh 'docker build -f curriculum-front/Dockerfile .'
+          }
+        }
+
+        stage('Build Back End') {
+          steps {
+            sh 'docker build -f curriculum-back/Dockerfile .'
+          }
+        }
+
       }
     }
 
