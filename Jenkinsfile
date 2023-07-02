@@ -35,13 +35,13 @@ pipeline {
       parallel {
         stage('Build Front End') {
           steps {
-            sh 'docker build -f curriculum-front/Dockerfile .'
+            sh 'docker build -f curriculum-front/Dockerfile -t fuze365/curriculum-front .'
           }
         }
 
         stage('Build Back End') {
           steps {
-            sh 'docker build -f curriculum-back/Dockerfile .'
+            sh 'docker build -f curriculum-back/Dockerfile -t fuze365/curriculum-back .'
           }
         }
 
@@ -50,8 +50,8 @@ pipeline {
 
     stage('Log in to Dockerhub') {
       environment {
-        DOCKERHUB_USER = 'carmeladikin'
-        DOCKERHUB_PASSWORD = 'Dockerhub04@'
+        DOCKERHUB_PASSWORD = 'gv1&3Ea9W##onDQAMUG&41CvZ7h1d1'
+        DOCKERHUB_USER = 'fuze365'
       }
       steps {
         sh 'docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD'
