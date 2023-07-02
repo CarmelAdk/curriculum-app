@@ -10,7 +10,7 @@ pipeline {
     stage('Log') {
       steps {
         sh 'ls -la'
-        sh 'ls'
+        sh 'echo $USER'
       }
     }
 
