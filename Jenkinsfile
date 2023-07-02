@@ -58,5 +58,22 @@ pipeline {
       }
     }
 
+    stage('Push Front End') {
+      parallel {
+        stage('Push Front End') {
+          steps {
+            sh 'docker push fuze365/curriculum-front:latest'
+          }
+        }
+
+        stage('Push Back End') {
+          steps {
+            sh 'docker push fuze365/curriculum-back:latest'
+          }
+        }
+
+      }
+    }
+
   }
 }
