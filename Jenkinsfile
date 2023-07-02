@@ -18,13 +18,13 @@ pipeline {
       parallel {
         stage('Front End Unit Tests') {
           steps {
-            sh 'cd curriculum-front && npm install'
+            sh 'cd curriculum-front'
           }
         }
 
         stage('Back End Unit Test') {
           steps {
-            sh 'cd curriculum-back && npm install'
+            sh 'cd curriculum-back'
           }
         }
 
