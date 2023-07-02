@@ -35,13 +35,13 @@ pipeline {
       parallel {
         stage('Build Front End') {
           steps {
-            sh 'docker build -f curriculum-front/Dockerfile -t fuze365/curriculum-front .'
+            sh 'docker build -f curriculum-front/Dockerfile -t fuze365/curriculum-front:latest .'
           }
         }
 
         stage('Build Back End') {
           steps {
-            sh 'docker build -f curriculum-back/Dockerfile -t fuze365/curriculum-back .'
+            sh 'docker build -f curriculum-back/Dockerfile -t fuze365/curriculum-back:latest .'
           }
         }
 
