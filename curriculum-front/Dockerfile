@@ -1,5 +1,5 @@
 # Build site with node image
-FROM node:lts-alpine as node-builder
+FROM node:16-alpine as node-builder
 WORKDIR /usr/src/app
 COPY curriculum-front/package*.json ./
 RUN ls -l
