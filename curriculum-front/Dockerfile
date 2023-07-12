@@ -1,4 +1,5 @@
-FROM node:16-alpine
+# Build site with node image
+FROM node:lts-alpine as node-builder
 WORKDIR /usr/src/app
 COPY curriculum-front/package*.json ./
 RUN ls -l
@@ -6,7 +7,10 @@ RUN npm install
 COPY curriculum-front ./
 RUN ls -l
 RUN npm run build
-COPY curriculum-front/nodeServer.js dist/nodeServer.js
-WORKDIR /usr/src/app/dist
-EXPOSE 8080
-CMD [ "node", "nodeServer.js" ]
+
+# Use nginx image to serve the static files
+# (and proxy to the back-end too!)
+FROM nginx:1.18
+WORKDIR /usr/share/nginx/html
+COPY --from=node-builder /usr/src/app/dist .
+EXPOSE 80
