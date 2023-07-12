@@ -3,6 +3,7 @@ FROM node:lts-alpine as node-builder
 WORKDIR /usr/src/app
 COPY curriculum-front/package*.json ./
 RUN ls -l
+RUN ls -ltr
 RUN npm install
 COPY curriculum-front ./
 RUN ls -l
